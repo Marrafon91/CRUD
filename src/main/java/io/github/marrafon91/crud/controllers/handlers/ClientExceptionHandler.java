@@ -2,6 +2,7 @@ package io.github.marrafon91.crud.controllers.handlers;
 
 import io.github.marrafon91.crud.dto.CustomError;
 import io.github.marrafon91.crud.dto.ValidationError;
+import io.github.marrafon91.crud.service.exceptions.DatabaseException;
 import io.github.marrafon91.crud.service.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -53,6 +54,13 @@ public class ClientExceptionHandler {
                 request.getRequestURI()
         );
 
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(DatabaseException.class)
+    public ResponseEntity<CustomError> database(DatabaseException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(err);
     }
 
