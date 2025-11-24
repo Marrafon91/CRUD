@@ -2,7 +2,6 @@ package io.github.marrafon91.crud.controllers;
 
 import io.github.marrafon91.crud.dto.ClientDTO;
 import io.github.marrafon91.crud.service.ClientService;
-import io.github.marrafon91.crud.service.exceptions.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
