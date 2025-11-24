@@ -12,7 +12,7 @@ public record ClientDTO(
         Long id,
 
         @NotBlank(message = "Campo obrigatório")
-        @Size(min = 2, max = 100, message = "Campo fora do tamanho padrão")
+        @Size(min = 3, max = 100, message = "Campo fora do tamanho padrão")
         String name,
 
         @NotBlank(message = "Campo obrigatório")

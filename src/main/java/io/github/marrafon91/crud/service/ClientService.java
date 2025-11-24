@@ -4,6 +4,7 @@ import io.github.marrafon91.crud.dto.ClientDTO;
 import io.github.marrafon91.crud.entity.Client;
 import io.github.marrafon91.crud.repository.ClientRepository;
 import io.github.marrafon91.crud.service.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,6 +36,18 @@ public class ClientService {
         dtoToEntity(dto, client);
         client = repository.save(client);
         return new ClientDTO(client);
+    }
+
+    @Transactional
+    public ClientDTO update (Long id, ClientDTO dto) {
+        try {
+            Client entity = repository.getReferenceById(id);
+            dtoToEntity(dto, entity);
+            entity = repository.save(entity);
+            return new ClientDTO(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Cliente não encontrado!");
+        }
     }
 
     private void dtoToEntity(ClientDTO dto, Client client) {

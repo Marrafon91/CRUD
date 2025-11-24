@@ -37,4 +37,10 @@ public class ClientControllers implements GenericController {
         URI location = HeaderLocation(result.id());
         return ResponseEntity.created(location).body(result);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ClientDTO> update(@PathVariable("id") Long id,@Valid @RequestBody ClientDTO dto) {
+        dto = service.update(id, dto);
+        return ResponseEntity.ok(dto);
+    }
 }
