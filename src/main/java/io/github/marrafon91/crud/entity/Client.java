@@ -1,4 +1,4 @@
-package io.github.marrafon91.crud.entities;
+package io.github.marrafon91.crud.entity;
 
 import jakarta.persistence.*;
 
