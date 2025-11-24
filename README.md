@@ -18,7 +18,7 @@ O projeto cobre todas as operações essenciais de um CRUD completo:
 🔹 Create
 Inserção de novos registros no banco de dados através de requisição POST. 
 
-- 🔹 Read
+🔹 Read
 Listagem de todos os registros
 Consulta individual por ID
 Paginação configurada para otimizar buscas em grandes volumes.
@@ -28,6 +28,7 @@ Atualização de registros existentes usando requisições PUT.
 
 🔹 Delete
 Remoção de registros de forma segura, incluindo tratamento para IDs inexistentes.
+
 ---
 🧩 Estrutura lógica da aplicação
 controller  →  service  →  repository  →  database
