@@ -3,18 +3,18 @@ package io.github.marrafon91.crud.controllers;
 import io.github.marrafon91.crud.dto.ClientDTO;
 import io.github.marrafon91.crud.service.ClientService;
 import io.github.marrafon91.crud.service.exceptions.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/clients")
-public class ClientControllers {
+public class ClientControllers implements GenericController {
 
     @Autowired
     private ClientService service;
@@ -29,5 +29,12 @@ public class ClientControllers {
     public ResponseEntity<Page<ClientDTO>> findAll(Pageable pageable) {
         Page<ClientDTO> dto = service.findAll(pageable);
         return ResponseEntity.ok(dto);
+    }
+
+    @PostMapping
+    public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientDTO dto) {
+        ClientDTO result = service.insert(dto);
+        URI location = HeaderLocation(result.id());
+        return ResponseEntity.created(location).body(result);
     }
 }
