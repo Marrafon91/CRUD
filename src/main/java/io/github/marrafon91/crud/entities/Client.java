@@ -17,13 +17,13 @@ public class Client {
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
-    @Column(name = "cpf", length = 11, nullable = false, unique = true)
+    @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 
     @Column(name = "income", nullable = false)
     private Double income;
 
-    @Column(name = "birth_date", nullable = false)
+    @Column(name = "birth_date", nullable = false, columnDefinition = "DATE")
     private LocalDate birthDate;
 
     @Column(name = "children")
