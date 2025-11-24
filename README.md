@@ -15,18 +15,18 @@ Este projeto tem como finalidade prática implementar operações básicas de **
 ## ✅ Funcionalidades implementadas  
 O projeto cobre todas as operações essenciais de um CRUD completo:
 ---
-🔹 Create
+🔹 **Create**
 Inserção de novos registros no banco de dados através de requisição POST. 
 
-🔹 Read
+🔹 **Read**
 Listagem de todos os registros
 Consulta individual por ID
 Paginação configurada para otimizar buscas em grandes volumes.
 
-🔹 Update
+🔹 **Update**
 Atualização de registros existentes usando requisições PUT.
 
-🔹 Delete
+🔹 **Delete**
 Remoção de registros de forma segura, incluindo tratamento para IDs inexistentes.
 
 ---
